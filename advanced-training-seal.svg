@@ -1,0 +1,49 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" role="img" aria-label="Specialized continuing-education seal">
+  <!-- Forest green disc -->
+  <circle cx="100" cy="100" r="96" fill="#2a342a"/>
+
+  <!-- Inner accent ring -->
+  <circle cx="100" cy="100" r="82" fill="none" stroke="#d18966" stroke-width="0.8" opacity="0.55"/>
+
+  <!-- Outer thin ring -->
+  <circle cx="100" cy="100" r="93" fill="none" stroke="#f4ecdf" stroke-width="0.4" opacity="0.4"/>
+
+  <!-- Text paths -->
+  <defs>
+    <path id="topArc" d="M 100,100 m -74,0 a 74,74 0 0,1 148,0" fill="none"/>
+    <path id="bottomArc" d="M 30,108 a 74,74 0 0,0 140,0" fill="none"/>
+  </defs>
+
+  <!-- Top arc: SPECIALIZED · STUDIES -->
+  <text fill="#f4ecdf" font-family="Fraunces, Georgia, serif" font-size="11" letter-spacing="4" font-weight="500">
+    <textPath href="#topArc" startOffset="50%" text-anchor="middle">SPECIALIZED · STUDIES</textPath>
+  </text>
+
+  <!-- Decorative dots between top/bottom arcs -->
+  <circle cx="22" cy="100" r="1.8" fill="#d18966"/>
+  <circle cx="178" cy="100" r="1.8" fill="#d18966"/>
+
+  <!-- Bottom arc: continuing education (italic) -->
+  <text fill="#d18966" font-family="Fraunces, Georgia, serif" font-size="8" letter-spacing="2.5" font-style="italic">
+    <textPath href="#bottomArc" startOffset="50%" text-anchor="middle">continuing education</textPath>
+  </text>
+
+  <!-- Center botanical sprig -->
+  <g transform="translate(100, 96)">
+    <!-- Stem -->
+    <line x1="0" y1="-22" x2="0" y2="22" stroke="#f4ecdf" stroke-width="1.2" stroke-linecap="round"/>
+
+    <!-- Left leaves (3 pairs) -->
+    <path d="M -1,-15 Q -10,-13 -14,-6 Q -8,-4 -1,-9 Z" fill="#d18966"/>
+    <path d="M -1,-4 Q -12,-2 -15,5 Q -8,7 -1,2 Z" fill="#d18966"/>
+    <path d="M -1,8 Q -10,10 -12,16 Q -7,18 -1,13 Z" fill="#d18966"/>
+
+    <!-- Right leaves (3 pairs) -->
+    <path d="M 1,-15 Q 10,-13 14,-6 Q 8,-4 1,-9 Z" fill="#d18966"/>
+    <path d="M 1,-4 Q 12,-2 15,5 Q 8,7 1,2 Z" fill="#d18966"/>
+    <path d="M 1,8 Q 10,10 12,16 Q 7,18 1,13 Z" fill="#d18966"/>
+
+    <!-- Top accent dot -->
+    <circle cx="0" cy="-22" r="1.8" fill="#f4ecdf"/>
+  </g>
+</svg>
