@@ -1096,11 +1096,99 @@ footer ul a:hover {
   .signature-card { padding: 3rem 2rem; }
   section { padding: 4.5rem 0; }
   .container { padding: 0 1.5rem; }
+
+  /* Tablet: 2-column credential grid */
+  .cred-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 3rem 2rem;
+  }
 }
+
+/* === MOBILE NAV (≤700px) — single-line layout that always fits === */
+@media (max-width: 700px) {
+  .nav-inner {
+    padding-left: 1.1rem;
+    padding-right: 1.1rem;
+    gap: 0.5rem;
+  }
+  /* Hide the wordmark — the icon mark alone carries the brand on mobile */
+  .logo-text { display: none; }
+  /* Tighter primary CTA */
+  .site-nav .btn {
+    padding: 0.6rem 1.05rem;
+    font-size: 0.88rem;
+  }
+  .site-nav .btn .arrow { display: none; }
+  .logo-mark { height: 36px; }
+}
+
 @media (max-width: 600px) {
   .pathway-grid { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr; }
   .hero { padding: 3rem 0; }
+  .page-hero { padding: 3rem 0; }
+
+  /* 1-column credential grid with tighter seal sizing */
+  .cred-grid {
+    grid-template-columns: 1fr;
+    gap: 2.8rem 1.5rem;
+  }
+  .cred-seal-icon,
+  .cred-seal-icon.cred-seal-img {
+    width: 115px;
+    height: 115px;
+    margin-bottom: 1.2rem;
+  }
+  .cred-seal h4 { font-size: 1.1rem; }
+  .cred-seal p { font-size: 0.92rem; max-width: 28ch; }
+
+  /* My Story scroll container — tighter for phone */
+  .story-scroll {
+    margin-top: 2rem;
+    border-radius: 4px;
+  }
+  .story-scroll-inner {
+    padding: 1.6rem 1.4rem 1.8rem 1.2rem;
+    max-height: 360px;
+  }
+  .story-scroll-inner p {
+    font-size: 1rem;
+    line-height: 1.65;
+    margin-bottom: 1.1rem;
+  }
+  .story-scroll-inner p:first-child::first-letter {
+    font-size: 2.3em;
+    margin-right: 0.1em;
+  }
+  .story-scroll::after { height: 36px; }
+
+  /* Tighter section-header on mobile so display headlines breathe but don't dominate */
+  .section-header { margin-bottom: 2.2rem; }
+  .section-header.center p { font-size: 1rem; }
+
+  /* Compact display sizes for mobile */
+  h1.display { font-size: clamp(2.3rem, 11vw, 3.4rem); }
+  h2.display { font-size: clamp(1.8rem, 7.5vw, 2.6rem); }
+  .display.headline-statement {
+    font-size: clamp(1.55rem, 5.5vw, 2rem);
+    line-height: 1.22;
+  }
+
+  /* Process grid: extra breathing room when stacked */
+  .process-step { padding: 0 0.2rem; }
+
+  /* Page-hero breadcrumb centered to feel less left-heavy */
+  .breadcrumb { margin-bottom: 1.2rem; }
+}
+
+/* === SMALLEST PHONES (≤380px) === */
+@media (max-width: 380px) {
+  .container { padding: 0 1.1rem; }
+  .nav-inner { padding-left: 0.9rem; padding-right: 0.9rem; }
+  .site-nav .btn {
+    padding: 0.55rem 0.9rem;
+    font-size: 0.82rem;
+  }
 }
 
 /* ============ ACCESSIBILITY ============ */
