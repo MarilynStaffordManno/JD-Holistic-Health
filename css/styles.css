@@ -224,20 +224,56 @@ section {
 .logo {
   display: inline-flex;
   align-items: center;
-  line-height: 0;
+  gap: 0.7rem;
+  line-height: 1;
 }
 .logo-mark {
-  height: 44px;
+  height: 38px;
   width: auto;
   transition: opacity 0.3s ease, transform 0.3s ease;
+  flex-shrink: 0;
+}
+.logo-text {
+  font-family: 'Fraunces', Georgia, serif;
+  font-variation-settings: "opsz" 144, "SOFT" 100;
+  font-weight: 400;
+  font-size: 1.25rem;
+  color: var(--forest);
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  transition: color 0.3s ease;
+}
+.logo-text em {
+  font-style: italic;
+  color: var(--clay);
+  font-weight: 350;
 }
 .logo:hover .logo-mark {
-  opacity: 0.85;
+  opacity: 0.88;
   transform: scale(1.03);
 }
-/* Slightly smaller in the dark footer for balance */
+.logo:hover .logo-text {
+  color: var(--clay);
+}
+.logo:hover .logo-text em {
+  color: var(--forest);
+}
+/* Footer (dark background) */
 footer .logo-mark {
-  height: 52px;
+  height: 44px;
+}
+footer .logo-text {
+  color: var(--cream);
+  font-size: 1.35rem;
+}
+footer .logo-text em {
+  color: var(--clay-soft);
+}
+footer .logo:hover .logo-text {
+  color: var(--clay-soft);
+}
+footer .logo:hover .logo-text em {
+  color: var(--cream);
 }
 .nav-links {
   display: flex;
@@ -1580,4 +1616,13 @@ footer ul a:hover {
 }
 .nav-links a.active::after {
   width: 100%;
+}
+
+/* ============ MISSION-STATEMENT HEADLINE ============ */
+/* For longer h1 statements that need to read like a sentence rather than a banner word. */
+.display.headline-statement {
+  font-size: clamp(1.85rem, 3.6vw, 3.05rem);
+  line-height: 1.18;
+  letter-spacing: -0.015em;
+  font-variation-settings: "opsz" 96, "SOFT" 50;
 }
