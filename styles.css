@@ -1104,22 +1104,20 @@ footer ul a:hover {
   }
 }
 
-/* === MOBILE NAV (≤700px) — single-line layout that always fits === */
+/* === MOBILE NAV (≤700px) — wordmark stays, hamburger replaces CTA + links === */
 @media (max-width: 700px) {
   .nav-inner {
     padding-left: 1.1rem;
     padding-right: 1.1rem;
     gap: 0.5rem;
   }
-  /* Hide the wordmark — the icon mark alone carries the brand on mobile */
-  .logo-text { display: none; }
-  /* Tighter primary CTA */
-  .site-nav .btn {
-    padding: 0.6rem 1.05rem;
-    font-size: 0.88rem;
+  /* Wordmark slightly smaller on mobile so it fits next to the hamburger */
+  .logo-text {
+    font-size: 1.05rem;
   }
-  .site-nav .btn .arrow { display: none; }
   .logo-mark { height: 36px; }
+  /* Hide desktop CTA and nav links — hamburger handles mobile nav */
+  .nav-cta { display: none; }
 }
 
 @media (max-width: 600px) {
@@ -1185,10 +1183,8 @@ footer ul a:hover {
 @media (max-width: 380px) {
   .container { padding: 0 1.1rem; }
   .nav-inner { padding-left: 0.9rem; padding-right: 0.9rem; }
-  .site-nav .btn {
-    padding: 0.55rem 0.9rem;
-    font-size: 0.82rem;
-  }
+  .logo-text { font-size: 0.98rem; }
+  .logo-mark { height: 32px; }
 }
 
 /* ============ ACCESSIBILITY ============ */
@@ -1808,4 +1804,124 @@ footer ul a:hover {
   .story-scroll-inner {
     padding: 1.8rem 1.6rem 2rem 1.4rem;
   }
+}
+
+/* ============ HAMBURGER BUTTON ============ */
+.nav-toggle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.25s ease;
+  -webkit-tap-highlight-color: transparent;
+  flex-shrink: 0;
+}
+.nav-toggle:hover {
+  background-color: rgba(185, 96, 63, 0.08);
+}
+.nav-toggle-bar {
+  display: block;
+  width: 22px;
+  height: 1.8px;
+  background-color: var(--forest);
+  border-radius: 2px;
+  transition: transform 0.35s cubic-bezier(0.7, 0, 0.3, 1),
+              opacity 0.2s ease,
+              background-color 0.3s ease;
+  transform-origin: center;
+}
+/* Open state — bars morph into an X */
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(1) {
+  transform: translateY(7px) rotate(45deg);
+  background-color: var(--clay);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav-toggle[aria-expanded="true"] .nav-toggle-bar:nth-child(3) {
+  transform: translateY(-7px) rotate(-45deg);
+  background-color: var(--clay);
+}
+
+/* ============ MOBILE DRAWER MENU ============ */
+.mobile-menu {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: var(--cream);
+  border-bottom: 1px solid var(--line);
+  box-shadow: 0 24px 40px -20px rgba(31, 26, 20, 0.18);
+  padding: 1.4rem 1.5rem 1.8rem;
+  transform: translateY(-12px);
+  opacity: 0;
+  visibility: hidden;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 0.3s ease,
+              visibility 0s linear 0.3s;
+  z-index: 49;
+}
+.mobile-menu.is-open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 0.3s ease,
+              visibility 0s linear 0s;
+}
+.mobile-menu-links {
+  list-style: none;
+  margin: 0 0 1.4rem;
+  padding: 0;
+}
+.mobile-menu-links li {
+  border-bottom: 1px dashed var(--line);
+}
+.mobile-menu-links li:last-child {
+  border-bottom: none;
+}
+.mobile-menu-links a {
+  display: block;
+  padding: 1rem 0.5rem;
+  font-family: 'Fraunces', serif;
+  font-size: 1.25rem;
+  font-weight: 400;
+  color: var(--forest);
+  font-variation-settings: "opsz" 72, "SOFT" 50;
+  letter-spacing: -0.005em;
+  transition: color 0.25s ease, padding-left 0.25s ease;
+}
+.mobile-menu-links a:hover,
+.mobile-menu-links a:focus-visible {
+  color: var(--clay);
+  padding-left: 0.9rem;
+}
+.mobile-menu-links a.active {
+  color: var(--clay);
+  font-style: italic;
+}
+.mobile-menu-cta {
+  display: inline-flex;
+  width: 100%;
+  justify-content: center;
+}
+/* When menu is open, prevent body scroll */
+body.menu-open {
+  overflow: hidden;
+}
+
+/* Hide hamburger + drawer on desktop (≥701px). On mobile they show by default. */
+@media (min-width: 701px) {
+  .nav-toggle { display: none; }
+  .mobile-menu { display: none; }
 }

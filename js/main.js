@@ -69,4 +69,47 @@
       }
     });
   });
+
+  // ============ MOBILE NAV TOGGLE ============
+  const navToggle = document.querySelector('.nav-toggle');
+  const mobileMenu = document.getElementById('mobile-menu');
+
+  if (navToggle && mobileMenu) {
+    const setMenuState = (open) => {
+      navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
+      mobileMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
+      mobileMenu.classList.toggle('is-open', open);
+      document.body.classList.toggle('menu-open', open);
+    };
+
+    navToggle.addEventListener('click', () => {
+      const isOpen = navToggle.getAttribute('aria-expanded') === 'true';
+      setMenuState(!isOpen);
+    });
+
+    // Close menu when a nav link is tapped
+    mobileMenu.querySelectorAll('a').forEach((link) => {
+      link.addEventListener('click', () => setMenuState(false));
+    });
+
+    // Close on Escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && navToggle.getAttribute('aria-expanded') === 'true') {
+        setMenuState(false);
+        navToggle.focus();
+      }
+    });
+
+    // Close when viewport grows back to desktop size
+    const mql = window.matchMedia('(min-width: 701px)');
+    const handleMqlChange = (e) => {
+      if (e.matches) setMenuState(false);
+    };
+    if (mql.addEventListener) {
+      mql.addEventListener('change', handleMqlChange);
+    } else if (mql.addListener) {
+      mql.addListener(handleMqlChange);
+    }
+  }
 })();
